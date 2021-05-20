@@ -1,0 +1,39 @@
+<div class="SearchDiv row">
+   <div class="row Heading"> 
+       <h1 style="text-align: center;"> {{title || uppercase}} </h1>
+      </div>
+<div class="col-sm-6">
+ <label class="lbSearch">Search:</label><br/>  <input class="SearchTextBox" [(ngModel)]="searchTextName" placeholder="Name">
+</div>
+<div class="col-sm-6">
+
+  
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="MemberRow col-md-4"  *ngFor="let member of members | nameFilter : searchTextName |  paginate: { itemsPerPage:12, currentPage: p } ">
+    
+        <div class="Member-box">
+        <div style="padding-left:5px;">
+        <p class="margin-bottom15">
+        <span class="Member-name"> {{ member.fullName }}</span><br>
+        <span class="role"> <strong> {{ member.company }}</strong></span><br>
+        <span class="role">  {{ member.fullAddress }}</span><br>
+        
+        <br>  </p>
+        </div>
+        </div>
+</div>
+
+
+
+</div>
+
+
+<div class="text-center row">
+    <br/>
+<pagination-controls (pageChange)="p =$event"></pagination-controls>
+</div>
